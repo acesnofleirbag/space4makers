@@ -1,0 +1,98 @@
+# GRAPHQL
+
+_for a better understanding of the main concepts of GraphQL will be used a
+comparison with the resful pattern_
+
+### Definition
+
+The GraphQL it's one of the possible way of communication between services
+together
+the REST (REpresentational State Transfer) pattern and gRPC (Remote
+Procedure Call) are the most used nowadays
+
+### Default types
+
+- **Query:** is the default type of search in a GraphQL API, compared to the
+  REST would be the `GET` method
+- **Mutation:** is the default type of modifications in a GraphQL API, compared
+  to the REST would be the `POST`, `PUT`, `PATCH`, `DELETE` methods
+    
+## Defining custom types
+
+Case it's necessary defines a specific type for your implementation we do as
+follows 
+
+```
+type User {
+   name String!
+   email String!
+   username String
+}
+```
+            
+We use the keyword `type` to tell it's will be a new type in the
+application, in case we will have a user with the follows attributes `name`,
+`email`, and `username`. Note that the attribute `username` don't finish with
+`!`, this means that the attribute is optional while the others are
+mandatory
+
+**passing parameters**
+
+Case it's necessary pass parameters we do as follows way:
+
+```
+user(id: Int!): User!
+```
+
+In this example our "endpoint" returns a user based on your `ID`
+            
+### Resolvers
+
+Are functions what will be executed when a "endpoint" is called, it's in
+resolvers that the implementation about what will be returned happens
+
+The resolvers can receive 3 (three) parameters, being them: root,
+arguments and context, that translating for our example with
+[ariadne](https://ariadnegraphql.org/) would stay object, infos and context
+
+```python
+def resolve_endpoint(obj, info, context):
+   """ implementation """
+   ...
+```
+        
+### Python usage
+
+Has a lot of available libs for Python but in our example will be use
+the ariadne, this is the get start example of ariadne's docs
+
+``` python
+from ariadne import QueryType, gql, make_executable_schema
+from ariadne.asgi import GraphQL
+
+type_defs = gql("""
+   type Query {
+      hello: String!
+   }
+""")
+
+# Create type instance for Query type defined in our schema...
+query = QueryType()
+
+
+# ...and assign our resolver function to its "hello" field.
+@query.field("hello")
+def resolve_hello(_, info):
+   request = info.context["request"]
+   user_agent = request.headers.get("user-agent", "guest")
+
+   return "Hello, %s!" % user_agent
+
+schema = make_executable_schema(type_defs, query)
+app = GraphQL(schema, debug=True)
+```
+                            
+### Supplementary article
+
+- [GraphQL for
+  beginners](https://medium.com/trainingcenter/graphql-para-iniciantes-a4cbe6c3da5d): `pt-BR` article

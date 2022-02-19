@@ -16,7 +16,7 @@ Procedure Call) are the most used nowadays
   REST would be the `GET` method
 - **Mutation:** is the default type of modifications in a GraphQL API, compared
   to the REST would be the `POST`, `PUT`, `PATCH`, `DELETE` methods
-    
+
 ## Defining custom types
 
 Case it's necessary defines a specific type for your implementation we do as
@@ -29,7 +29,7 @@ type User {
    username String
 }
 ```
-            
+
 We use the keyword `type` to tell it's will be a new type in the
 application, in case we will have a user with the follows attributes `name`,
 `email`, and `username`. Note that the attribute `username` don't finish with
@@ -45,7 +45,7 @@ user(id: Int!): User!
 ```
 
 In this example our "endpoint" returns a user based on your `ID`
-            
+
 ### Resolvers
 
 Are functions what will be executed when a "endpoint" is called, it's in
@@ -60,7 +60,7 @@ def resolve_endpoint(obj, info, context):
    """ implementation """
    ...
 ```
-        
+
 ### Python usage
 
 Has a lot of available libs for Python but in our example will be use
@@ -91,8 +91,10 @@ def resolve_hello(_, info):
 schema = make_executable_schema(type_defs, query)
 app = GraphQL(schema, debug=True)
 ```
-                            
+
 ### Supplementary article
 
 - [GraphQL for
   beginners](https://medium.com/trainingcenter/graphql-para-iniciantes-a4cbe6c3da5d): `pt-BR` article
+
+by @thebe111

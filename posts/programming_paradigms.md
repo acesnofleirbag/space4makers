@@ -1,0 +1,80 @@
+# Programming Paradigms
+
+### Imperative vs Declarative
+
+**Imperative**
+
+- Focus in the workflow
+- Mutable state
+- How?
+- Greater code quantity
+- Low level of scalability
+- More explicit
+
+**Declarative**
+
+- Focus in the logic
+- Imutability
+- What?
+- Less code quantity
+- High level of scalability
+- Less explicit
+
+### OOP (Object Oriented Programming)
+
+The object oriented programming consists in 4 (four) pillars:
+
+- Abstraction
+- Encapsulation
+- Inheritance
+- Polymorphism
+
+**Abstraction:** Nothing more than the form how anything on real world will be treated on the code, in other words, how
+will be the behavior and the characteristics of anything on the software
+
+**Encapsulation:** Treat of the access part inside the OOP, isolating the object properties of an object to not have a
+direct access to this properties
+
+**Inheritance:** Give us the possibility of a "children" object to have the same properties and behaviors of a "father"
+object reducing the code repetition
+
+**Polimorphism:** Permits that the behavior of an object be different depending of what params this object receive
+
+Have too the composition concept otherwise the inheritance, to understand in a better way this concept I recommend the
+study of the GOF (gang of four) design patterns. A good resource for this is the website [Refactoring
+Guru](https://refactoring.guru) 
+
+### Functional Programming
+
+The functional programming it's a oriented function strategy, with that we have:
+
+**Pure Functions:** Don't modify the scope around, receive or not params and with this it's possible the function chain.
+The use of pure functions grant a better predictability to the software
+
+**Impure Functions:** Modify the scope around making hard the software predictability. With example, given any parameter
+this function create a element inside the DOM (Document Object Model), that is, this relation is not inside the function
+scope therefore ouw function would be impure
+
+**First Class Function:** Are functions that can be passes as parameter to another functions and would be returned from
+another function, become as "variables" inside the function
+
+**High Other Function:** Are functions that permits other functions as parameter and can or not returns functions as
+result
+
+**Currying:** It's a form to pass parameters in a partial way to a function making with that each parameter become a
+function with only one parameter
+
+**Imutability:** The data not be direct changed, the data is cpoied to another memory space to have a updated version of
+the data
+
+**obs:** A disadvantage of the functional programming it's that increase the memory usage in relation of another paradigms
+justly because of the imutability
+
+### Procedural Programming
+
+**Execution Stack:** A function stack it's formed to be executed
+
+**Scope:** Was when the scoper concept was introduced on the software development but this scope was the global scope,
+that is, a function would be modify the scope around itself
+
+by @thebe111

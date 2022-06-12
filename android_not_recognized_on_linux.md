@@ -14,7 +14,7 @@ SUBSYSTEM="usb", ATTRS{idVendor}=="< vendor's id >", MODE="0666", OWNER="< usern
 
 **obs:** To knows the vendor's id and the product's id execute the command `lsusb`
 
-![lsusb command](./../assets/android_not_recognized_on_linux_asset_1.webp)
+![lsusb command](./assets/android_not_recognized_on_linux_asset_1.webp)
 
 The green side it's the vendor's id and the yellow side it's the product's id, to pass the product's id add:
 

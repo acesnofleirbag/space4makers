@@ -3,7 +3,7 @@
 It's a tool that makes the management of source code producing a binary
 accordingly the specs defined on the build system's config file
 
-### How to use this?
+### How To Use This?
 
 In this text we will cover about `cmake` usage, the cmake config file is
 `CMakeLists.txt`
@@ -99,12 +99,10 @@ $ cmake -G Ninja ..
 $ ninja
 ```
 
-### Related resources
+### Related Resources
 
 - ninja build
 - autotools
 - make
 - Makefile
-
-by @thebe111
 

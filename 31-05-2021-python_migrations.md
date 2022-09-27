@@ -145,4 +145,3 @@ $ alembic -x seed=true downgrade base
 
 To more details about the tool (alembic) visit the official website
 
-by @thebe111

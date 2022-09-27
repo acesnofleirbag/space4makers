@@ -1,6 +1,6 @@
-# APT Hash Sum Mismatch Error
+# APT HASH SUM MISMATCH ERROR
 
-### Why this Happens?
+### Why This Happens?
 
 For some reason the APT cannot makes the correct compression of the files,
 occurring in this error
@@ -15,4 +15,3 @@ sudo rm -rf /var/lib/apt/lists/*
 sudo apt update --fix-missing
 ```
 
-by @thebe111

@@ -49,4 +49,3 @@ last and first element - if passed only one element repeat for element-time
 
 **obs:** The form (? ...) it's supported only for some languages and tools - new metacharacters
 
-by @thebe111

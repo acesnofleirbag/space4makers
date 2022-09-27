@@ -1,4 +1,4 @@
-# Android not Recognized on Linux
+# ANDROID NOT RECOGNIZED ON LINUX
 
 Already faced with the fact of connect a android device and it not be recognized on a Linux system when it's executed
 the command `adb devices`?
@@ -32,4 +32,3 @@ sudo systemctl restart udev.service
 If no one of this solution works have the [JMTPFS](https://github.com/JasonFerrara/jmtpfs) utility, with it's possible
 to execute the command `mount` on android partition
 
-by @thebe111

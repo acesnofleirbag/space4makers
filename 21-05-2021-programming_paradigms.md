@@ -1,4 +1,4 @@
-# Programming Paradigms
+# PROGRAMMING PARADIGMS
 
 ### Imperative vs Declarative
 
@@ -77,4 +77,3 @@ justly because of the imutability
 **Scope:** Was when the scoper concept was introduced on the software development but this scope was the global scope,
 that is, a function would be modify the scope around itself
 
-by @thebe111

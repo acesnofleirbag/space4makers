@@ -46,4 +46,3 @@ possible to perform "arguments injection" to build most embracing layouts
 The final planned layout can be drawn through wireframes or other design
 interface's techniques, using all above topics for this
 
-by @thebe111

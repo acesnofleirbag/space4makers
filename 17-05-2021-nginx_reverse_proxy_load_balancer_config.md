@@ -4,7 +4,7 @@
 
 The nginx config file is located on: `/etc/nginx/conf.d/default.conf`
 
-### Working as Reverse Proxy
+### Working As Reverse Proxy
 
 To work as reverse poroxy inside the config file it's necessary the following rules:
 
@@ -14,7 +14,7 @@ location {
 }
 ```
 
-### Working as Load Balancer
+### Working As Load Balancer
 
 To work as load balancer inside the config file it's necessary the following rules:
 
@@ -39,8 +39,7 @@ location {
 **obs:** Inside the workers on `/etc/nginx/nginx.conf` it's necessary to put the header inside the object `http` on
 log_format
 
-### Supplementary resources
+### Supplementary Resources
 
 - [official docs](https://nginx.org/en/)
 
-by @thebe111

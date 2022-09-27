@@ -123,4 +123,3 @@ License: MIT
 # ...
 ```
 
-by @thebe111

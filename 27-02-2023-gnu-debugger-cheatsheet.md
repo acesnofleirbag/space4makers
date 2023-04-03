@@ -14,3 +14,8 @@
 - `x/i $pc`: examine instruction on program counter `?`
 - `info registers`: get info about the registers
 - `catch throw`: stop on error
+- `disassemble /sr <fn-name>`: disassemble a function
+- `info target`: some elf infos
+- `maint info sections`: infos about sections
+- `info variables`: info about declared variables
+- `info functions`: info about declared functions

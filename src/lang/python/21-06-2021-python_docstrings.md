@@ -1,0 +1,125 @@
+# Python Docstrings
+
+A built-in form to write documentations
+
+### What's Docstrings?
+
+Docstring it's a built-in documentation form of classes, functions, modules, etc in Python. Help us to describe
+anything without to pollute the code with comments, leaving comments more specifics like: TODO, FIXME, etc ...
+
+### Google's Standard
+
+The standard that I recommend you to use is the [Google
+Dosctring](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html), it's really clean and very
+objective. I makes some changes on default docstring format, e.g:
+
+```python
+class GoogleDocstring:
+    """
+    google dosctring implementation example
+
+    Attributes:
+        - language (str): The knowledge programming language
+        - version (float): Version of the provided programming language
+        - open_source (bool): Describe if the provided programming language is open source
+
+    Methods:
+        - lorem_ipsum: Return a lorem ipsum string to stdout
+        - good_morning: Display a good morning string for stdout, if the time is between 07:00am and 11:59am
+
+    Exceptions:
+        - InvalidTime: Happens when the current time is not between a valid time
+
+    Business Rules:
+        - Need to print "good morning" only if the current time is between 07:00am and 11:59am
+
+    Other Sections:
+    Here we can put others compatibles sections like:
+        - Filters: If this abstraction can be filtered
+        - TODO: Todo items
+        - Note: Implement notes for the client
+        - Others from your preference, be creative ...
+    """
+
+    # Implementation after one empty line from docstring
+    # ...
+```
+
+### Why To Use Docstring Otherwise Comments?
+
+Comments are not interpreted by the Python as the docstring are, when we declare a docstring on a function, like:
+
+```python
+def lorem_ipsum() -> None:
+    """Display 'lorem ipsum' to stdout"""
+    ...
+```
+
+if there is any question about function usage (of course you can inspect the code) we can just make a `print` on the
+function's documentation, e.g:
+
+```
+print(lorem_ipsum.__doc__)
+
+# Execution
+
+>>> Display 'lorem ipsum' to stdout
+```
+
+> Tip: We can use the `help` function too, passing the function `lorem_ipsum` as an argument
+
+### Where To Implement
+
+Implement docstrings on all places can be very tedious task and we know that not always we can implement the
+documentation in all softwares that we produces, so in my opinion we can implement the docstring in 2 (two) key moments:
+
+- When has the involvement on business rules 
+
+When we have a function, method or class that implements any business rules it's a good moment to implement the
+docstrings because like that others developers that will be makes the code maintenance will be aware that on this
+function a business rule is implemented and need a more attention on code changes
+
+- When you code is complex
+
+Complex code (if your code is complex can be a good signal to refactor this and makes the code more simple) can cause
+a lot of questions on more inexperienced colaborators, and in some cases on the more experienced colaborators too, it's
+a good moment to use the docstring to give some context about the implementation
+
+### Script Usage
+
+Not always it's a good ideia to implement a documentation on a script that have a fast and single usage, however if this
+script will be used more that 1 (one) time can be a good ideia to implement a documentation. Follow an example of a
+script documentation following the Shell Script Profissional by Aurelio Marinho Jargas
+
+```python
+"""
+#!/usr/bin/env python
+
+battery_notifier.py - Display the current battery status from a GNU/Linux system
+
+Author: Bart Simpsons <bart@mail.com>
+
+-------
+
+This script display in STDOUT the battery status, only works on a GNU/Linux system,
+for more instructions run with '-h' argument
+
+Usage:
+    $ ./battery_notifier.py
+    or
+    $ python battery_notifier.py
+
+-------
+
+History:
+    v1.0.0 2021-01-01, Bart Simpsons:
+        - Initial version
+    v1.0.1 2021-02-15, Bart Simpsons:
+        - Added pretty output actions
+
+License: MIT
+"""
+
+# ...
+```
+

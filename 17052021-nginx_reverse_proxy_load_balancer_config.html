@@ -18,11 +18,11 @@ The nginx config file is located on: '/etc/nginx/conf.d/default.conf'
 
 To work as reverse poroxy inside the config file it's necessary the following rules:
 
-
+<div class="code">
 location {
    proxy_pass http://&lt;address&gt;;
 }
-
+</div>
 
 # Working As Load Balancer
 
@@ -30,23 +30,23 @@ To work as load balancer inside the config file it's necessary the following rul
 
 - create a server group
 
-
+<div class="code">
 upstream &lt;upstream-name&gt; {
    server &lt;address1&gt;;
    server &lt;address2&gt;;
 }
-
+</div>
 
 - setup the server group
 
-
+<div class="code">
 location {
    proxy_pass http://&lt;upstream-name&gt;;
 
    // forward the real request ip address
    proxy_set_headers X-Header-Name $remote_addr;
 }
-
+</div>
 
 Obs: Inside the workers on '/etc/nginx/nginx.conf' it's necessary to put the header inside the object 'http' on
 log_format

@@ -7,3 +7,9 @@ body {
     background-color: #101010;
     color: #fafafa;
 }
+
+div.code {
+    padding: 8px;
+    background-color: #202020;
+    border-radius: 4px;
+}

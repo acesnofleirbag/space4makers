@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>space4makers</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <pre>
+Testes Automatizados
+---
+
+Testes automatizados fazem parte dos principais conceitos quando falamos de qualidade de software, porém muitas
+vezes, como desenvolvedores, não sabemos como trabalhar com os mesmos
+
+# Porque Testar?
+
+Alguns motivos do porque testes são importantes:
+
+- Com os testes podemos identificar falhas antes do software ir para produção
+- Podemos evidenciar regras/especificações do domínio
+- Garantir que um mesmo erro não tenha um 'reset' após ser eliminado
+- Garantir integridade das regras de negócio
+
+# Pirâmide De Testes
+
+Quando nos tratamos sobre testes de software temos um conceito amplamente utilizado conhecido como 'pirâmide de
+testes', que nos define categorias de testes. Temos:
+
+- Testes Unitários
+
+Objetivo: Tem como objetivo testar a menor unidade possível dentro do software
+Motivo de falha: Testes unitários - quase sempre - falham quando a implementação sofre alteração
+Custo (recurso): Baixo
+Fakers: Amplamente utilizado
+
+- Testes De Integração
+
+Objetivo: Tem como objetivo testar a integração entre os componentes do software
+Motivo de falha: Testes de integração falham sempre que a forma como os componentes se comunicam é alterada
+Custo (recurso): Mediano
+Fakers: Amplamente utilizado
+
+- Testes Ponta A Ponta (e2e)
+
+Objetivo: Tem como objetivo simular todo o percurso de um cliente (sendo o mesmo uma API, uma pessoa, etc..)
+Motivo de falha: Testes e2e falham quando a saída dos dados sofre alteração para uma mesma entrada
+Custo (recurso): Alto
+Fakers: Utilizado somente em serviços terceiros
+
+# Padrões De Descrição De Testes
+
+- Should, When, At
+
+Descreve o comportamento de um teste com uma síntaxe simples e enxuta
+
+Exemplo:
+
+<div class="code">
+should return 201 status code when an user introduce a valid payload
+</div>
+
+- Gherkin Syntax
+
+Este é um padrão amplamente utilizado em desenvolvimento orientado a comportamento, é robusto e tem uma ampla conexão
+com o domínio do software
+
+Exemplo:
+
+<div class="code">
+feature: todo feature
+scenario: the user want to register a new todo
+given:
+   - a valid payload
+when:
+   - the POST /todo endpoint is called
+then:
+   - return 201 status code
+</div>
+
+# Como Estruturar Os Testes
+
+Uma maneira que considero eficiente é o padrão (AAA), implicitamente você já deve estar utilizando apenas não sabendo
+(caso já não conheça) que esse padrão exista. Nada mais é do que seguir a abordagem de:
+
+- Preparação (Arrange) 
+- Ação (Act)
+- Resultado (Assert)
+
+Seguir essa abordagem sempre, evita testes onde a ação (act) fica mistura com a preparação (arrange) deixando as coisas
+confusas
+
+Exemplo:
+
+<div class="code">
+function test() {
+    // arrange
+    aqui você cria objetos, e inicilializa valores e tudo o que é necessário para a execução do teste
+
+    // act
+    aqui você faz a ação da abstração que está sendo testada (chamada de alguma função)
+
+    // assert
+    aqui você faz a checagem se o retorno do processamento é igual ao valor que é pré conhecido
+}
+</div>
+
+# Exemplos
+
+* Todos os exemplos feitos com Typescript *
+
+- Teste Unitário
+
+Para testes unitários precisamos trabalhar com injeção de dependência (nada mais que passar um argumento para uma
+função), sempre que tenho alocação de memória dentro do teste a ser realizado, caso contrário não consigo alterar a
+implementação real
+
+Para esse exemplo vamos adicionar o valor 1 a algum número informado
+
+<div class="code">
+class Sut {
+    run(a: number, b: number) {
+        return a + b;
+    }
+}
+
+class Test {
+    private sut: Sut;
+
+    constructor(sut: Sut) {
+        // aqui eu tenho alocação de memória, logo eu preciso realizar a injeção de dependência
+        // caso eu faça igual ao comentário não consigo alterar a implementação
+
+        this.sut = sut; // new Sut() &lt;= fazer isso impossibilita alteração (alto acoplamento)
+    }
+
+    run(n: number) {
+        return this.sut.run(1, n);
+    }
+
+}
+
+// arrange
+const test = new Test(new Sut());
+
+// act
+const res = test.run(2);
+
+// assert
+console.log(res === 3); // saída esperada e pré conhecida === 3
+</div>
+
+Caso eu mude a minha implementação injetando um erro (como esse exemplo é simples é fácil de identificar o erro porém em
+casos mais complexos o erro passa despercebido) então teremos falha no caso de teste
+
+<div class="code">
+class Sut {
+    run(a: number, b: number) {
+        return a + b + 1; // ERRO: adiciona +1 ao resultado
+    }
+}
+
+class Test {
+    private sut: Sut;
+
+    constructor(sut: Sut) {
+        // aqui eu tenho alocação de memória, logo eu preciso realizar a injeção de dependência
+        // caso eu faça igual ao comentário não consigo alterar a implementação
+
+        this.sut = sut; // new Sut() &lt;= fazer isso impossibilita alteração (alto acoplamento)
+    }
+
+    run(n: number) {
+        return this.sut.run(1, n);
+    }
+
+}
+
+// arrange
+const test = new Test(new Sut());
+
+// act
+const res = test.run(2);
+
+// assert
+console.log(res === 3); // saída esperada e pré conhecida === 3, porém recebo 4 falhando o teste
+</div>
+
+- Teste De Integração
+
+Para esse exemplo vamos fazer a integração da operação de adição com a operação de multiplicação, o que é esperado é o
+triplo de um valor
+
+<div class="code">
+class Add {
+    run(a: number, b: number) {
+        return a + b;
+    }
+}
+
+class Mul {
+    run(a: number, b: number) {
+        return a * b;
+    }
+}
+
+class Test {
+    private add: Add;
+    private mul: Mul;
+
+    constructor(add: Add, mul: Mul) {
+        this.add = add;
+        this.mul = mul;
+    }
+
+    run(a: number, b: number) {
+        const addResponse = this.add.run(a, b)
+        const triple = this.mul.run(3, addResponse);
+
+        return triple;
+    }
+}
+
+// arrange
+const test = new Test(new Add(), new Mul());
+
+// act
+const res = test.run(1, 1);
+
+// assert
+console.log(res === 6); // saída esperada e pré conhecida === 6
+</div>
+
+Adicionando um erro, ou seja, alterando a forma como os componentes da minha aplicação se relacionam eu tenho o seguinte
+erro:
+
+<div class="code">
+class Add {
+    run(a: number, b: number) {
+        return a + b;
+    }
+}
+
+class Mul {
+    run(a: number, b: number) {
+        return a * b;
+    }
+}
+
+class Div {
+    run(a: number, b: number) {
+        return a / b;
+    }
+}
+
+class Test {
+    private add: Add;
+    private mul: Mul;
+
+    constructor(add: Add, mul: Mul) {
+        this.add = add;
+        this.mul = mul;
+    }
+
+    run(a: number, b: number) {
+        const addResponse = this.add.run(a, b)
+        const triple = this.mul.run(3, addResponse);
+
+        return triple;
+    }
+}
+
+// arrange
+// ERRO: Altero a forma de comunicação passando uma operação de divisão, por causa do duck-typing não recebo nenhum
+// alerta
+const test = new Test(new Add(), new Div());
+
+// act
+const res = test.run(1, 1);
+
+// assert
+console.log(res === 6); // saída esperada e pré conhecida === 6, porém recebo 1.5
+</div>
+
+- Teste Ponta A Ponta
+
+Para esse exemplo eu quero o dobro de um valor
+
+<div class="code">
+class Mul {
+    run(n: number) {
+        return n * 2;
+    }
+}
+
+class Test {
+    private mul: Mul;
+
+    constructor(mul: Mul) {
+        this.mul = mul;
+    }
+
+    run(n: number) {
+        return this.mul.run(n);
+    }
+}
+
+// arrange
+const test = new Test(new Mul()); // &lt;= suponhamos que não temos conhecimento sobre a implementação de 'Mul'
+
+// act
+const res = test.run(3);
+
+// assert
+console.log(res === 6); // saída esperada e pré conhecida === 6
+</div>
+
+Recebemos uma versão alterada de 'Mul', onde não temos acesso ao código fonte e com isso só temos a resposta de 'Mul'
+como forma de validação
+
+<div class="code">
+class Mul {
+    run(n: number) {
+        return n * 3;
+    }
+}
+
+class Test {
+    private mul: Mul;
+
+    constructor(mul: Mul) {
+        this.mul = mul;
+    }
+
+    run(n: number) {
+        return this.mul.run(n);
+    }
+}
+
+// arrange
+const test = new Test(new Mul()); // &lt;= suponhamos que não temos conhecimento sobre a implementação de 'Mul'
+
+// act
+const res = test.run(3);
+
+// assert
+console.log(res === 6); // saída esperada e pré conhecida === 6, porém recebo 9
+</div>
+
+# Conteúdos Complementares
+
+- https://medium.com/creditas-tech/a-pir%C3%A2mide-de-testes-a0faec465cc2
+- https://blog.tecnospeed.com.br/teste-de-software/
+- https://natahouse.com/pt/piramide-de-testes
+- https://martinfowler.com/articles/practical-test-pyramid.html
+    </pre>
+</body>
+</html>

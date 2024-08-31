@@ -19,7 +19,7 @@ uma função!
 
 No exemplo a seguir temos todo o fluxo básico de funcionamento de uma aplicação WEB moderna
 
-
+<div class="code">
 function server(request) {
     middlewares(request);
     validations(request);
@@ -28,7 +28,7 @@ function server(request) {
 
     return { "data": data };
 }
-
+</div>
 
 Embora o exemplo seja simples e bem minimalista, ele reflete a estrutura fundamental das aplicações WEB modernas. Vamos
 detalhar então o fluxo:
@@ -36,10 +36,10 @@ detalhar então o fluxo:
 Provavelmente você já ouviu falar sobre: Controllers, Services, Repositories e um monte de outros termos bonitinhos,
 seguindo essa abordagem já conhecida temos o seguinte:
 
-
+<div class="code">
 middlewares =&gt; validações =&gt; controllers =&gt; serviços =&gt; persistência (camada de dados) =&gt; (efeito slingshot) 
 =&gt; persistência (camada de dados) =&gt; serviços =&gt; controllers =&gt; middlewares
-
+</div>
 
 Vamos então para uma breve explicação sobre cada etapa:
 

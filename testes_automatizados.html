@@ -74,20 +74,33 @@ when:
 then:
    - return 201 status code
 
+# Como Organizar Os Testes
+
+Uma maneira que considero eficiente é o padrão (AAA), implicitamente você já deve estar utilizando apenas não sabendo
+(caso já não conheça) que esse padrão já existia. Nada mais é do que seguir a abordagem de Preparação (Arrange), Ação
+(Act) e Resultado (Assert)
+
+
+function test() {
+    // arrange
+    aqui você cria objetos, e inicilializa valores e tudo o que é necessário para a execução do teste
+
+    // act
+    aqui você faz a ação da abstração que está sendo testada (chamada de alguma função)
+
+    // assert
+    aqui você faz a checagem se o retorno do processamento é igual ao valor que é pre conhecido
+}
+
+
 # Exemplos
 
 * Todos os exemplos feitos com Typescript *
 
-- Modelo De Componentes
-
-Para os exemplos vamos utilizar modelos de componentes com as 4 (quatro) operações matemáticas básicas:
-
-+-----------+    +-------------+    +----------+    +---------+
-| ADICIONAR | => | MULTIPLICAR | => | SUBTRAIR | => | DIVIDIR |
-+-----------+    +-------------+    +----------+    +---------+
-
 - Teste Unitário
 
+// para testes unitários precisamos trabalhar com injeção de dependência 
+// (nada mais que passar um argumento para uma função)
 
 - Teste De Integração
 

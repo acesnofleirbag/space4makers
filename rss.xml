@@ -1,0 +1,58 @@
+<rss version="2.0">
+    <channel>
+        <title>space4makers</title>
+        <link href="https://space4makers.com.br/rss.xml" rel="self" type="application/rss+xml">https://space4makers.com.br</link>
+        <description>by Gabriel Fonseca, @acesnofleirbag</description>
+        <language>en-us</language>
+        <lastBuildDate>Sat, 31 Aug 2024 16:56:12 -0300</lastBuildDate>
+
+        <item>
+            <title>Testes Automatizados</title>
+            <link>https://space4makers.com.br/31082024-testes_automatizados.html</link>
+            <pubDate>Sat, 31 Aug 2024 12:00:00 -0300</pubDate>
+            <guid>https://space4makers.com.br/31082024-testes_automatizados.html</guid>
+        </item>
+
+        <item>
+            <title>Aplicações WEB Modernas</title>
+            <link>https://space4makers.com.br/17082024-aplicacoes_web_modernas.html</link>
+            <pubDate>Sat, 17 Aug 2024 12:00:00 -0300</pubDate>
+            <guid>https://space4makers.com.br/17082024-aplicacoes_web_modernas.html</guid>
+        </item>
+
+        <item>
+            <title>Assembly General</title>
+            <link>https://space4makers.com.br/05102023-assembly_general.html</link>
+            <pubDate>Thu, 05 Oct 2023 12:00:00 -0300</pubDate>
+            <guid>https://space4makers.com.br/05102023-assembly_general.html</guid>
+        </item>
+
+        <item>
+            <title>Permissions With Bitwise Operations</title>
+            <link>https://space4makers.com.br/13022023-permissions_with_bitwise_operations.html</link>
+            <pubDate>Mon, 13 Feb 2023 12:00:00 -0300</pubDate>
+            <guid>https://space4makers.com.br/13022023-permissions_with_bitwise_operations.html</guid>
+        </item>
+
+        <item>
+            <title>Build System</title>
+            <link>https://space4makers.com.br/13042022-build_system.html</link>
+            <pubDate>Wed, 13 Apr 2022 12:00:00 -0300</pubDate>
+            <guid>https://space4makers.com.br/13042022-build_system.html</guid>
+        </item>
+
+        <item>
+            <title>Atomic Design</title>
+            <link>https://space4makers.com.br/24052021-atomic_design.html</link>
+            <pubDate>Mon, 24 May 2021 12:00:00 -0300</pubDate>
+            <guid>https://space4makers.com.br/24052021-atomic_design.html</guid>
+        </item>
+
+        <item>
+            <title>Programming Paradigms</title>
+            <link>https://space4makers.com.br/21052021-programming_paradigms.html</link>
+            <pubDate>Fri, 21 May 2021 12:00:00 -0300</pubDate>
+            <guid>https://space4makers.com.br/21052021-programming_paradigms.html</guid>
+        </item>
+    </channel>
+</rss>

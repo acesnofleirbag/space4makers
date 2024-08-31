@@ -1,11 +1,22 @@
-# Iptables
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Space4Makers</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <pre>
+Iptables
+---
 
 Basic configuration for a personal home laptop
 
-```
 $ iptables -P INPUT DROP
 $ iptables -P FORWARD DROP
 $ iptables -A OUTPUT -o lo -j ACCEPT
 $ iptables -A INPUT -i lo -j ACCEPT
 $ iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-```
+    </pre>
+</body>
+</html>

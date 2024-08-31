@@ -1,14 +1,26 @@
-# Irssi Setup
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Space4Makers</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <pre>
+Irssi Setup
+---
 
-Irssi is a client to send messages over IRC protocol, it's common on open source development. Follow the step below to
-get a configured version of irssi with tor to hide hostname informations on `/whois` command
+Irssi is a client to send messages over IRC protocol, it's common on open source development.
+Follow the step below to get a configured version of irssi with tor to hide hostname informations on `/whois` command
 
-```console
 $ mkdir -p ~/.irssi/certs/
 $ change irc.libera.chat to palladium.libera.chat
 $ write on /etc/tor/torrc
-    # get the hash on libera chat official site
+
+    Get the hash on libera chat official site
+
     MapAddress palladium.libera.chat libera<hash>.onion
+
 $ openssl req -x509 -new -newkey rsa:4096 -sha256 -days 1096 -nodes -out irc.pem -keyout irc.pem
 $ /network modify -sasl_mechanism PLAIN -sasl_username <username> -sasl_password <pass> liberachat
 $ /server modify -tls_verify -tls_cert ~/.irssi/certs/irc.pem irc.libera.chat 6697
@@ -18,6 +30,10 @@ $ /disconnect
 $ /network modify -sasl_password '' -sasl_mechanism EXTERNAL LiberaChat
 $ /ignore -channels * JOINS QUITS
 $ /save
-# execute over proxychains
+
+Execute over proxychains
+
 $ proxychains4 irssi
-```
+    </pre>
+</body>
+</html>

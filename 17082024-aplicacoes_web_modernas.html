@@ -70,15 +70,15 @@ ser: REST, GraphQL, RPC
 
 - Efeito Slingshot
 
-O famosos 'tudo que vai volta', quem solicita um determinado recurso espera uma resposta. Após a persistência/consulta a
+O famoso 'tudo que vai volta', quem solicita um determinado recurso espera uma resposta. Após a persistência/consulta a
 aplicação refaz todo o fluxo para apresentar uma resposta ao cliente (solicitante), podendo os dados no retrocesso serem
 processados antes da apresentação
 
 # Aplicabilidade
 
-Muitas aplicações modernas não seguem essa abordagem, sendo o mais comum a omissão da etapa de validação - ou pelo menos
-não dando uma atenção devida a essa etapa - isso faz com que o núcleo da aplicação fique com dados inconsistentes. Mas
-qual o efeito disso?
+Já tive experiência com aplicações que não seguiam essa abordagem, sendo o mais comum a omissão da etapa de validação -
+ou pelo menos não dando uma atenção devida a essa etapa - isso faz com que o núcleo da aplicação fique com dados
+inconsistentes. Mas qual o efeito disso?
 
 Quando se tem uma aplicação com dados inconsistentes de alguma maneira haverá a validação desses dados em outro
 processamento (caso não se deseje encontrar um erro), fazendo com que a complexidade de outros serviços que realizam a

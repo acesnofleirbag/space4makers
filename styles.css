@@ -8,8 +8,8 @@ body {
     color: #fafafa;
 }
 
-div.code {
-    padding: 8px;
+code {
+    padding: 4px;
+    display: flex;
     background-color: #202020;
-    border-radius: 4px;
 }

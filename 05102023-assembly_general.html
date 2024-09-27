@@ -8,11 +8,13 @@
 <body>
     <pre>
 Assembly General
+===
+
+Each architecture has your own operation code (opcode) that is an instruction 
+set supported by the processor arch
+
+Processor
 ---
-
-Each architecture has your own operation code (opcode) that is an instruction set supported by the processor arch
-
-# Processor
 
 The processor has the following steps:
 
@@ -20,17 +22,21 @@ The processor has the following steps:
 - decode
 - exec cycle
 
-# Why I need to make the memory alignment?
+Why I need to make the memory alignment?
+---
 
-The reason for this is that the processor requires two memory accesses to make an unaligned memory access; aligned
-accesses require only one memory access. A word (2-byte) or doubleword (4-byte) operand that crosses a 4-byte boundary
-or a quadword (8-byte) operand that crosses an 8-byte boundary is considered unaligned and requires two separate memory
-bus cycles for access
+The reason for this is that the processor requires two memory accesses to make
+an unaligned memory access; aligned accesses require only one memory access. A
+word (2-byte) or doubleword (4-byte) operand that crosses a 4-byte boundary or a
+quadword (8-byte) operand that crosses an 8-byte boundary is considered
+unaligned and requires two separate memory bus cycles for access
 
-# Cheatsheets
+Cheatsheets
+---
 
-- The instruction i++ otherwise ++i use one more instruction on generated assembly code, for a simple increment
-    outside a for block for instance. Inside a for block the generated asm were the same
+- The instruction i++ otherwise ++i use one more instruction on generated
+assembly code, for a simple increment outside a for block for instance. Inside a
+for block the generated asm were the same
 - Syscall numbers can be found on '/usr/include/asm/unistd.h'
     </pre>
 </body>

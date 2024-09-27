@@ -8,12 +8,14 @@
 <body>
     <pre>
 Testes Automatizados
+===
+
+Testes automatizados fazem parte dos principais conceitos quando falamos de
+qualidade de software, porém muitas vezes, como desenvolvedores, não sabemos
+como trabalhar com os mesmos
+
+Porque Testar?
 ---
-
-Testes automatizados fazem parte dos principais conceitos quando falamos de qualidade de software, porém muitas
-vezes, como desenvolvedores, não sabemos como trabalhar com os mesmos
-
-# Porque Testar?
 
 Alguns motivos do porque testes são importantes:
 
@@ -22,10 +24,12 @@ Alguns motivos do porque testes são importantes:
 - Garantir que um mesmo erro não tenha um 'reset' após ser eliminado
 - Garantir integridade das regras de negócio
 
-# Pirâmide De Testes
+Pirâmide De Testes
+---
 
-Quando nos tratamos sobre testes de software temos um conceito amplamente utilizado conhecido como 'pirâmide de
-testes', que nos define categorias de testes. Temos:
+Quando nos tratamos sobre testes de software temos um conceito amplamente
+utilizado conhecido como 'pirâmide de testes', que nos define categorias de
+testes. Temos:
 
 - Testes Unitários
 
@@ -48,7 +52,8 @@ Motivo de falha: Testes e2e falham quando a saída dos dados sofre alteração p
 Custo (recurso): Alto
 Fakers: Utilizado somente em serviços terceiros
 
-# Padrões De Descrição De Testes
+Padrões De Descrição De Testes
+---
 
 - Should, When, At
 
@@ -56,18 +61,18 @@ Descreve o comportamento de um teste com uma síntaxe simples e enxuta
 
 Exemplo:
 
-<div class="code">
+<code>
 should return 201 status code when an user introduce a valid payload
-</div>
+</code>
 
 - Gherkin Syntax
 
-Este é um padrão amplamente utilizado em desenvolvimento orientado a comportamento, é robusto e tem uma ampla conexão
-com o domínio do software
+Este é um padrão amplamente utilizado em desenvolvimento orientado a
+comportamento, é robusto e tem uma ampla conexão com o domínio do software
 
 Exemplo:
 
-<div class="code">
+<code>
 feature: todo feature
 scenario: the user want to register a new todo
 given:
@@ -76,48 +81,55 @@ when:
    - the POST /todo endpoint is called
 then:
    - return 201 status code
-</div>
+</code>
 
-# Como Estruturar Os Testes
+Como Estruturar Os Testes
+---
 
-Uma maneira que considero eficiente é o padrão (AAA), implicitamente você já deve estar utilizando apenas não sabendo
-(caso já não conheça) que esse padrão exista. Nada mais é do que seguir a abordagem de:
+Uma maneira que considero eficiente é o padrão (AAA), implicitamente você já
+deve estar utilizando apenas não sabendo (caso já não conheça) que esse padrão
+exista. Nada mais é do que seguir a abordagem de:
 
 - Preparação (Arrange) 
 - Ação (Act)
 - Resultado (Assert)
 
-Seguir essa abordagem sempre, evita testes onde a ação (act) fica mistura com a preparação (arrange) deixando as coisas
-confusas
+Seguir essa abordagem sempre, evita testes onde a ação (act) fica mistura com a
+preparação (arrange) deixando as coisas confusas
 
 Exemplo:
 
-<div class="code">
+<code>
 function test() {
     // arrange
-    aqui você cria objetos, e inicilializa valores e tudo o que é necessário para a execução do teste
+    aqui você cria objetos, e inicilializa valores e tudo o que é necessário
+    para a execução do teste
 
     // act
-    aqui você faz a ação da abstração que está sendo testada (chamada de alguma função)
+    aqui você faz a ação da abstração que está sendo testada (chamada de alguma
+    função)
 
     // assert
-    aqui você faz a checagem se o retorno do processamento é igual ao valor que é pré conhecido
+    aqui você faz a checagem se o retorno do processamento é igual ao valor que
+    é pré conhecido
 }
-</div>
+</code>
 
-# Exemplos
+Exemplos
+---
 
-* Todos os exemplos feitos com Typescript *
+*Todos os exemplos feitos com Typescript*
 
 - Teste Unitário
 
-Para testes unitários precisamos trabalhar com injeção de dependência (nada mais que passar um argumento para uma
-função), sempre que tenho alocação de memória dentro do teste a ser realizado, caso contrário não consigo alterar a
+Para testes unitários precisamos trabalhar com injeção de dependência (nada mais
+que passar um argumento para uma função), sempre que tenho alocação de memória
+dentro do teste a ser realizado, caso contrário não consigo alterar a
 implementação real
 
 Para esse exemplo vamos adicionar o valor 1 a algum número informado
 
-<div class="code">
+<code>
 class Sut {
     run(a: number, b: number) {
         return a + b;
@@ -128,8 +140,9 @@ class Test {
     private sut: Sut;
 
     constructor(sut: Sut) {
-        // aqui eu tenho alocação de memória, logo eu preciso realizar a injeção de dependência
-        // caso eu faça igual ao comentário não consigo alterar a implementação
+        // aqui eu tenho alocação de memória, logo eu preciso realizar a injeção
+        // de dependência caso eu faça igual ao comentário não consigo alterar a
+        // implementação
 
         this.sut = sut; // new Sut() &lt;= fazer isso impossibilita alteração (alto acoplamento)
     }
@@ -148,12 +161,13 @@ const res = test.run(2);
 
 // assert
 console.log(res === 3); // saída esperada e pré conhecida === 3
-</div>
+</code>
 
-Caso eu mude a minha implementação injetando um erro (como esse exemplo é simples é fácil de identificar o erro porém em
-casos mais complexos o erro passa despercebido) então teremos falha no caso de teste
+Caso eu mude a minha implementação injetando um erro (como esse exemplo é
+simples é fácil de identificar o erro porém em casos mais complexos o erro passa
+despercebido) então teremos falha no caso de teste
 
-<div class="code">
+<code>
 class Sut {
     run(a: number, b: number) {
         return a + b + 1; // ERRO: adiciona +1 ao resultado
@@ -164,8 +178,9 @@ class Test {
     private sut: Sut;
 
     constructor(sut: Sut) {
-        // aqui eu tenho alocação de memória, logo eu preciso realizar a injeção de dependência
-        // caso eu faça igual ao comentário não consigo alterar a implementação
+        // aqui eu tenho alocação de memória, logo eu preciso realizar a injeção
+        // de dependência caso eu faça igual ao comentário não consigo alterar a
+        // implementação
 
         this.sut = sut; // new Sut() &lt;= fazer isso impossibilita alteração (alto acoplamento)
     }
@@ -184,14 +199,14 @@ const res = test.run(2);
 
 // assert
 console.log(res === 3); // saída esperada e pré conhecida === 3, porém recebo 4 falhando o teste
-</div>
+</code>
 
 - Teste De Integração
 
-Para esse exemplo vamos fazer a integração da operação de adição com a operação de multiplicação, o que é esperado é o
-triplo de um valor
+Para esse exemplo vamos fazer a integração da operação de adição com a operação
+de multiplicação, o que é esperado é o triplo de um valor
 
-<div class="code">
+<code>
 class Add {
     run(a: number, b: number) {
         return a + b;
@@ -229,12 +244,12 @@ const res = test.run(1, 1);
 
 // assert
 console.log(res === 6); // saída esperada e pré conhecida === 6
-</div>
+</code>
 
-Adicionando um erro, ou seja, alterando a forma como os componentes da minha aplicação se relacionam eu tenho o seguinte
-erro:
+Adicionando um erro, ou seja, alterando a forma como os componentes da minha
+aplicação se relacionam eu tenho o seguinte erro:
 
-<div class="code">
+<code>
 class Add {
     run(a: number, b: number) {
         return a + b;
@@ -271,8 +286,8 @@ class Test {
 }
 
 // arrange
-// ERRO: Altero a forma de comunicação passando uma operação de divisão, por causa do duck-typing não recebo nenhum
-// alerta
+// ERRO: Altero a forma de comunicação passando uma operação de divisão, por
+// causa do duck-typing não recebo nenhum alerta
 const test = new Test(new Add(), new Div());
 
 // act
@@ -280,13 +295,13 @@ const res = test.run(1, 1);
 
 // assert
 console.log(res === 6); // saída esperada e pré conhecida === 6, porém recebo 1.5
-</div>
+</code>
 
 - Teste Ponta A Ponta
 
 Para esse exemplo eu quero o dobro de um valor
 
-<div class="code">
+<code>
 class Mul {
     run(n: number) {
         return n * 2;
@@ -313,12 +328,12 @@ const res = test.run(3);
 
 // assert
 console.log(res === 6); // saída esperada e pré conhecida === 6
-</div>
+</code>
 
-Recebemos uma versão alterada de 'Mul', onde não temos acesso ao código fonte e com isso só temos a resposta de 'Mul'
-como forma de validação
+Recebemos uma versão alterada de 'Mul', onde não temos acesso ao código fonte e
+com isso só temos a resposta de 'Mul' como forma de validação
 
-<div class="code">
+<code>
 class Mul {
     run(n: number) {
         return n * 3;
@@ -345,9 +360,10 @@ const res = test.run(3);
 
 // assert
 console.log(res === 6); // saída esperada e pré conhecida === 6, porém recebo 9
-</div>
+</code>
 
-# Conteúdos Complementares
+Conteúdos Complementares
+---
 
 - https://medium.com/creditas-tech/a-pir%C3%A2mide-de-testes-a0faec465cc2
 - https://blog.tecnospeed.com.br/teste-de-software/

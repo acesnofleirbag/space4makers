@@ -8,47 +8,50 @@
 <body>
     <pre>
 Build System
+===
+
+It's a tool that makes the management of source code producing a binary
+accordingly the specs defined on the build system's config file
+
+How To Use This?
 ---
 
-It's a tool that makes the management of source code producing a binary accordingly the specs defined on the build
-system's config file
-
-# How To Use This?
-
-In this text we will cover about 'cmake' usage, the cmake config file is 'CMakeLists.txt'
+In this text we will cover about 'cmake' usage, the cmake config file is
+'CMakeLists.txt'
 
 To start with cmake we need first define a cmake version like that
 
-<div class="code">
+<code>
 // the latest version when this text was writed was the 3.10 version
 cmake_minimum_required(VERSION 3.10)
-</div>
+</code>
 
 after cmake version is defined we will set some variables
 
-<div class="code">
-// we will set this variable to change this only on time in the cmake file specs, and reuse this variable when necessary
+<code>
+// we will set this variable to change this only on time in the cmake file
+// specs, and reuse this variable when necessary
 set(PROJECT "project-name")
 
 // this define the compiler to *.cpp files
 set(CMAKE_CXX_COMPILER "unix-path-to-binary")
-</div>
+</code>
 
 now we can define some metadata about current project 
 
-<div class="code">
+<code>
 project(
     ${PROJECT}
     VERSION 1.0.0
     DESCRIPTION "project description"
     LANGUAGES CXX
 )
-</div>
+</code>
 
-it's necessary to define how the build system will produce the binary file and what files will be used to produce the
-binary
+it's necessary to define how the build system will produce the binary file and
+what files will be used to produce the binary
 
-<div class="code">
+<code>
 add_executable(
     ${PROJECT}
     # here we list all necessaries files in the compilation to program start
@@ -56,12 +59,13 @@ add_executable(
     main.cpp
     *.cpp
 )
-</div>
+</code>
 
-and in cmake we have some special function that defines the compiler behavior, always stating with 'target_*' 
-(all target_* function need to be defined after executable definition inside 'add_executable' function)
+and in cmake we have some special function that defines the compiler behavior,
+always stating with 'target_*' (all target_* function need to be defined after
+executable definition inside 'add_executable' function)
 
-<div class="code">
+<code>
 // used to setup the compiler standard
 target_compile_features(${PROJECT} PRIVATE cxx_std_20)
 
@@ -76,14 +80,15 @@ target_compile_options(
     -Wsign-conversion
     -Wimplicit-fallthrough
 )
-</div>
+</code>
 
-to finish as basic knowledge, we can produce a cmake config file aggregation defining another config file inside a
-project subfolder and compose these files with the following function
+to finish as basic knowledge, we can produce a cmake config file aggregation
+defining another config file inside a project subfolder and compose these files
+with the following function
 
-<div class="code">
+<code>
 add_subdirectory(path-to-sub-directory-to-be-aggregated)
-</div>
+</code>
 
 to generate the binary we have some methods to do that:
 
@@ -101,7 +106,8 @@ $ cd build
 $ cmake -G Ninja ..
 $ ninja
 
-# Related Resources
+Related Resources
+---
 
 - ninja build
 - autotools

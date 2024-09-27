@@ -4,7 +4,13 @@
         <link href="https://space4makers.com.br/rss.xml" rel="self" type="application/rss+xml">https://space4makers.com.br</link>
         <description>by Gabriel Fonseca, @acesnofleirbag</description>
         <language>en-us</language>
-        <lastBuildDate>Sat, 31 Aug 2024 16:56:12 -0300</lastBuildDate>
+
+        <item>
+            <title>Comos Somos Profissionalmente Avaliados</title>
+            <link>https://space4makers.com.br/10092024-como_somos_profissionalmente_avaliados.html</link>
+            <pubDate>Sat, 10 Set 2024 12:00:00 -0300</pubDate>
+            <guid>https://space4makers.com.br/10092024-como_somos_profissionalmente_avaliados.html</guid>
+        </item>
 
         <item>
             <title>Testes Automatizados</title>

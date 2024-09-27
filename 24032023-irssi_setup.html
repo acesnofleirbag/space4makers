@@ -8,10 +8,11 @@
 <body>
     <pre>
 Irssi Setup
----
+===
 
-Irssi is a client to send messages over IRC protocol, it's common on open source development.
-Follow the step below to get a configured version of irssi with tor to hide hostname informations on `/whois` command
+Irssi is a client to send messages over IRC protocol, it's common on open source
+development. Follow the step below to get a configured version of irssi with tor
+to hide hostname informations on `/whois` command
 
 $ mkdir -p ~/.irssi/certs/
 $ change irc.libera.chat to palladium.libera.chat
@@ -32,6 +33,7 @@ $ /ignore -channels * JOINS QUITS
 $ /save
 
 Execute over proxychains
+---
 
 $ proxychains4 irssi
     </pre>

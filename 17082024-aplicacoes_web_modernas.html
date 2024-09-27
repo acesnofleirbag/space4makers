@@ -8,18 +8,20 @@
 <body>
     <pre>
 Aplicações WEB Modernas (ou talvez nem tanto)
----
+===
 
-Aplicações WEB modernas seguem um fluxo básico de implementação que já vi profissionais que o mercado considera como
-sênior (~10 anos de carreira) não terem uma visão completa do mesmo deixando a tomada de decisão e a implementação do
-software menos eficiente
+Aplicações WEB modernas seguem um fluxo básico de implementação que já vi
+profissionais que o mercado considera como sênior (~10 anos de carreira) não
+terem uma visão completa do mesmo deixando a tomada de decisão e a implementação
+do software menos eficiente
 
-Para demonstrar esse fluxo irei diluir em um exemplo utilizando a menor unidade de abstração que temos para esse fim:
-uma função!
+Para demonstrar esse fluxo irei diluir em um exemplo utilizando a menor unidade
+de abstração que temos para esse fim: uma função!
 
-No exemplo a seguir temos todo o fluxo básico de funcionamento de uma aplicação WEB moderna
+No exemplo a seguir temos todo o fluxo básico de funcionamento de uma aplicação
+WEB moderna
 
-<div class="code">
+<code>
 function server(request) {
     middlewares(request);
     validations(request);
@@ -28,63 +30,73 @@ function server(request) {
 
     return { "data": data };
 }
-</div>
+</code>
 
-Embora o exemplo seja simples e bem minimalista, ele reflete a estrutura fundamental das aplicações WEB modernas. Vamos
-detalhar então o fluxo:
+Embora o exemplo seja simples e bem minimalista, ele reflete a estrutura
+fundamental das aplicações WEB modernas. Vamos detalhar então o fluxo:
 
-Provavelmente você já ouviu falar sobre: Controllers, Services, Repositories e um monte de outros termos bonitinhos,
-seguindo essa abordagem já conhecida temos o seguinte:
+Provavelmente você já ouviu falar sobre: Controllers, Services, Repositories e
+um monte de outros termos bonitinhos, seguindo essa abordagem já conhecida temos
+o seguinte:
 
-<div class="code">
+<code>
 middlewares =&gt; validações =&gt; controllers =&gt; serviços =&gt; persistência (camada de dados) =&gt; (efeito slingshot) 
 =&gt; persistência (camada de dados) =&gt; serviços =&gt; controllers =&gt; middlewares
-</div>
+</code>
 
 Vamos então para uma breve explicação sobre cada etapa:
 
 - Middleware
 
-Atua como porteiros que podem ou não definir regras de entrada ou saída ao recurso em questão
+Atua como porteiros que podem ou não definir regras de entrada ou saída ao
+recurso em questão
 
 - Validações
 
-Regras para assegurar que os dados atendem aos critérios necessários antes de prosseguir. Por exemplo, se a pessoa que
-solicita o acesso não tem a CNH (Carteira Nacional de Habilitação) com a categoria igual à 'B' então não deve conseguir
-realizar o acesso
+Regras para assegurar que os dados atendem aos critérios necessários antes de
+prosseguir. Por exemplo, se a pessoa que solicita o acesso não tem a CNH
+(Carteira Nacional de Habilitação) com a categoria igual à 'B' então não deve
+conseguir realizar o acesso
 
 Anota isso: Não deixamos essa pessoa passar para depois ir atrás dela
 
 - Controllers
 
-São como pontos de entrada (uma porta em uma casa). Temos nas aplicações modernas diferentes abordagens podendo elas
-ser: REST, GraphQL, RPC
+São como pontos de entrada (uma porta em uma casa). Temos nas aplicações
+modernas diferentes abordagens podendo elas ser: REST, GraphQL, RPC
 
 - Serviços
 
-É a camada que realiza a manipulação e controle das regras de negócios dos dados informados
+É a camada que realiza a manipulação e controle das regras de negócios dos dados
+informados
 
 - Persistência (camada de dados)
 
-É a camada que faz o acesso aos locais onde tais informações estão armazenadas: MySQL, MongoDB, Arquivo
+É a camada que faz o acesso aos locais onde tais informações estão armazenadas:
+MySQL, MongoDB, Arquivo
 
 - Efeito Slingshot
 
-O famoso 'tudo que vai volta', quem solicita um determinado recurso espera uma resposta. Após a persistência/consulta a
-aplicação refaz todo o fluxo para apresentar uma resposta ao cliente (solicitante), podendo os dados no retrocesso serem
-processados antes da apresentação
+O famoso 'tudo que vai volta', quem solicita um determinado recurso espera uma
+resposta. Após a persistência/consulta a aplicação refaz todo o fluxo para
+apresentar uma resposta ao cliente (solicitante), podendo os dados no retrocesso
+serem processados antes da apresentação
 
-# Aplicabilidade
+Aplicabilidade
+---
 
-Já tive experiência com aplicações que não seguiam essa abordagem, sendo o mais comum a omissão da etapa de validação -
-ou pelo menos não dando uma atenção devida a essa etapa - isso faz com que o núcleo da aplicação fique com dados
+Já tive experiência com aplicações que não seguiam essa abordagem, sendo o mais
+comum a omissão da etapa de validação - ou pelo menos não dando uma atenção
+devida a essa etapa - isso faz com que o núcleo da aplicação fique com dados
 inconsistentes. Mas qual o efeito disso?
 
-Quando se tem uma aplicação com dados inconsistentes de alguma maneira haverá a validação desses dados em outro
-processamento (caso não se deseje encontrar um erro), fazendo com que a complexidade de outros serviços que realizam a
-manipulação do mesmo dado aumente, muitas vezes sem necessidade, simplesmente pelo fato de não ter tido uma validação no
-início do processamento, ou ainda pior, uma mesma validação de integridade seja realizada diversas vezes por diferentes
-serviços havendo uma duplicação da mesma
+Quando se tem uma aplicação com dados inconsistentes de alguma maneira haverá a
+validação desses dados em outro processamento (caso não se deseje encontrar um
+erro), fazendo com que a complexidade de outros serviços que realizam a
+manipulação do mesmo dado aumente, muitas vezes sem necessidade, simplesmente
+pelo fato de não ter tido uma validação no início do processamento, ou ainda
+pior, uma mesma validação de integridade seja realizada diversas vezes por
+diferentes serviços havendo uma duplicação da mesma
     </pre>
 </body>
 </html>

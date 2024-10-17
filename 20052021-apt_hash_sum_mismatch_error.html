@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>space4makers</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <pre>
+APT Hash Sum Mismatch Error
+===
+
+Why This Happens?
+---
+
+For some reason the APT cannot makes the correct compression of the files,
+generating this error
+
+Solution
+---
+
+<code>
+$ sudo apt autoclean
+$ sudo rm -rf /var/lib/apt/lists/*
+$ sudo apt update --fix-missing
+</code>
+    </pre>
+</body>
+</html>

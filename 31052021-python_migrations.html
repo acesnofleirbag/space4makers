@@ -1,50 +1,66 @@
-# Python Migrations
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>space4makers</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <pre>
+Python Migrations
+===
 
-Ever needed to create database migrations in Python and didn't know where to start?
+Ever needed to create database migrations in Python and didn't know where to
+start?
 
-### What's Migrations?
+What's Migrations?
+---
 
-Migrations is a mode to realize a database versioning, the form how the database was implemented with your tables and
-tables's configurations
+Migrations is a mode to realize a database versioning, the form how the database
+was implemented with your tables and tables's configurations
 
-Are very powerful and very used because permits that in 1 (one) or on max 2 (two) commands we have the database's
-structure created, so much for testing or project's initialization in case of the first contact 
+Are very powerful and very used because permits that in 1 (one) or on max 2
+(two) commands we have the database's structure created, so much for testing or
+project's initialization in case of the first contact 
 
-### Alembic
+Alembic
+---
 
-[Alembic](https://alembic.sqlalchemy.org/en/latest/) it's a Python module that give us the possibility to execute the
+Alembic['0] it's a Python module that give us the possibility to execute the
 migrations in a easy way, we make this following the follows steps:
 
 - alembic init 
 
-Is used to init the alembic configuration file on project (run this command on project root folder)
+Is used to init the alembic configuration file on project (run this command on
+project root folder)
 
-```console
+<code>
 $ alembic init migrations
-```
+</code>
 
-on this moment will be created a folder called `migrations` and the file `alembic.ini` on project root folder, go to the
-file `alembic.ini` and pass the database connection string, e.g:
+on this moment will be created a folder called 'migrations' and the file
+'alembic.ini' on project root folder, go to the file 'alembic.ini' and pass the
+database connection string, e.g:
 
-> This step can have variations following the project's configuration
+* This step can have variations following the project's configuration *
 
-```
+<code>
 sqlalchemy.url = sqlite:///database/storage.db
-```
+</code>
 
 - Defining the migration
 
-Here will be created a table to a user abstraction `User`, to this execute:
+Here will be created a table to a user abstraction 'User', to this execute:
 
-```console
+<code>
 $ alembic revision -m "create: users table"
-```
+</code>
 
-now on the path `migrations/versios` we can find a file similar to this: `11f0db5a01cb_create_user_table.py`
+now on the path 'migrations/versios' we can find a file similar to this: '11f0db5a01cb_create_user_table.py'
 
-editing the file on function `upgrade`, we have the following result:
+editing the file on function 'upgrade', we have the following result:
 
-```python
+<code>
 # ...
 
 def upgrade():
@@ -68,36 +84,39 @@ def upgrade():
     )
 
 # ...
-```
+</code>
 
-and to reverse the `upgrade` action, we change the `downgrade` on the following form:
+and to reverse the 'upgrade' action, we change the 'downgrade' on the following
+form:
 
-```python
+<code>
 # ...
 
 def downgrade():
     op.drop_table("users")
 # ...
-```
+</code>
 
-It's ready, this is suficient, we have our table `users`. To execute the migration just execute:
+It's ready, this is suficient, we have our table 'users'. To execute the
+migration just execute:
 
-```console
+<code>
 $ alembic upgrade head
-```
+</code>
 
 to revert the action just run: 
 
-```console
+<code>
 $ alembic downgrade base
-```
+</code>
 
-### Seeds
+Seeds
+---
 
-Seeds are pre-defined data to insert on the created tables, we can perform the seeds creation editing the `upgrade`
-function:
+Seeds are pre-defined data to insert on the created tables, we can perform the
+seeds creation editing the 'upgrade' function:
 
-```python
+<code>
 from alembic import op, context
 
 # ...
@@ -134,12 +153,16 @@ def upgrade():
         )
 
 # ...
-```
+</code>
 
 and when we need of the seeds' data it's just to execute:
 
-```console
+<code>
 $ alembic -x seed=true upgrade head
 $ alembic -x seed=true downgrade base
-```
+</code>
 
+['0]: https://alembic.sqlalchemy.org/en/latest/ 
+    </pre>
+</body>
+</html>

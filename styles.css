@@ -4,12 +4,24 @@
 
 body {
     padding: 8px;
-    background-color: #101010;
-    color: #fafafa;
+    background-color: #2f3541;
+    color: #eceff4;
 }
 
 code {
     padding: 4px;
     display: flex;
-    background-color: #202020;
+    background-color: #4c566a;
+}
+
+a, a:active {
+    color: #88c0d0;
+}
+
+a:visited {
+    color: #8fbcbb;
+}
+
+a:hover {
+    color: inherit;
 }

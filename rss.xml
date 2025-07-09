@@ -48,6 +48,13 @@
         </item>
 
         <item>
+            <title>Mail From CLI On Linux</title>
+            <link>https://gabrielfonseca.me/articles/20230328-mail_from_cli_on_linux.html</link>
+            <pubDate>Tue, 28 Mar 2023 12:00:00 -0300</pubDate>
+            <guid>https://gabrielfonseca.me/articles/20230328-mail_from_cli_on_linux.html</guid>
+        </item>
+
+        <item>
             <title>Permissions With Bitwise Operations</title>
             <link>https://gabrielfonseca.me/articles/20230213-permissions_with_bitwise_operations.html</link>
             <pubDate>Mon, 13 Feb 2023 12:00:00 -0300</pubDate>
@@ -94,6 +101,13 @@
             <link>https://gabrielfonseca.me/articles/20210520-apt_hash_sum_mismatch_error.html</link>
             <pubDate>Fri, 20 May 2021 12:00:00 -0300</pubDate>
             <guid>https://gabrielfonseca.me/articles/20210520-apt_hash_sum_mismatch_error.html</guid>
+        </item>
+
+        <item>
+            <title>GraphQL</title>
+            <link>https://gabrielfonseca.me/articles/20210519-graphql.html</link>
+            <pubDate>Tue, 19 May 2021 12:00:00 -0300</pubDate>
+            <guid>https://gabrielfonseca.me/articles/20210519-graphql.html</guid>
         </item>
 
         <item>

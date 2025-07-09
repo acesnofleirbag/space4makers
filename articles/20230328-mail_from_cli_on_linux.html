@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>space4makers</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <pre>
+Mail From CLI
+===
+
+To send an email from the cli it's necessary to configure a mail transfer agent
+(MTA), for this we'll use the postfix agent (with a gmail account in mind).
+
+To install the postfix run (debian based distros):
+
+<code>
+$ sudo apt install postfix
+</code>
+
+on the installation process you'll be asked to input a fully qualified domain
+name (FQDN), on this step you can ignore with an empty string and answering
+'yes' on the next window frame
+
+Create a new file on '/etc/postfix/sasl/sasl_passwd' and insert the following
+content:
+
+<code>
+[smtp.gmail.com]:587 [mail-addr]@gmail.com:[password]
+</code>
+
+Switch '[mail-addr]' and '[password]' with the correct value of your account.
+After that generate a db file (this file need to be access only by the root
+user with the `0600` permission) with the following command:
+
+<code>
+$ sudo postmap /etc/postfix/sasl/sasl_passwd
+</code>
+
+a new file 'sasl_passwd.db' will be generated on the same directory.
+
+Insert the content on the '/etc/postfix/main.cf':
+
+<code>
+relayhost = [smtp.gmail.com]:587
+smtp_sasl_auth_enable = yes
+smtp_sasl_security_options = noanonymous
+smtp_sasl_password_maps = hash:/etc/postfix/sasl/sasl_passwd
+smtp_tls_security_level = encrypt
+smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
+</code>
+
+To fisish restart the service
+
+<code>
+$ sudo systemctl restart postfix
+</code>
+
+To send an email, using the sendmail utility
+
+<code>
+$ sendmail [address] < msg.txt
+</code>
+
+The file msg.txt has the following format
+
+<code>
+To: addr@mail.com
+From: "Alias" &lt;addr@mail.com&gt;
+Date: Mon, 01 Jan 2000 12:00:00 -0300
+Subject: Email subject
+Cc: addr@mail.com
+
+&lt;message body&gt;
+</code>
+    </pre>
+</body>
+</html>

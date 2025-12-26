@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>space4makers</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <pre>
+Steam With Wine
+===
+
+1. intall wine on the system
+
+$ brew --cask wine-stable
+
+2. install steam windows version on wine
+3. exec first run with following flags:
+
+$ wine steam.exe
+    -forcesteamupdate 
+    -forcepackagedownload 
+    -overridepackageurl http://web.archive.org/web/20240520if_/media.steampowered.com/client 
+    -exitsteam
+
+4. exec pos-first run with following flags:
+
+$ wine steam.exe
+    -noverifyfiles 
+    -nobootstrapupdate 
+    -skipinitialbootstrap 
+    -norepairfiles 
+    -overridepackageurl
+
+Font
+---
+https://github.com/Whisky-App/Whisky/issues/1336#issuecomment-2746507779
+    </pre>
+</body>
+</html>
